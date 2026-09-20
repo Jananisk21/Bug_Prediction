@@ -79,7 +79,22 @@ class BugPredictor:
         dev_vec = self._dev_vector(dev_features)
 
         # --- baseline LR ---
-        baseline_prob = float(self.baseline.predict_proba(dev_vec)[:, 1][0])
+        try:
+            if hasattr(self.baseline, "predict_proba"):
+                baseline_prob = float(self.baseline.predict_proba(dev_vec)[:, 1][0])
+            else:
+                baseline_prob = 0.5
+        except Exception:
+            try:
+                # Direct dot-product sigmoid if sklearn attribute mismatch occurs
+                if hasattr(self.baseline, "coef_") and hasattr(self.baseline, "intercept_"):
+                    import scipy.special
+                    z = float(np.dot(dev_vec, self.baseline.coef_.T) + self.baseline.intercept_)
+                    baseline_prob = float(1.0 / (1.0 + np.exp(-z)))
+                else:
+                    baseline_prob = 0.5
+            except Exception:
+                baseline_prob = 0.5
 
         # --- hybrid model ---
         token_ids = self.vocab.encode(diff_text, max_tokens=self.max_tokens)
