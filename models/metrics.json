@@ -1,0 +1,155 @@
+{
+  "baseline_logistic_regression": {
+    "classification": {
+      "threshold": 0.5,
+      "accuracy": 0.7272727272727273,
+      "precision": 0.2288135593220339,
+      "recall": 0.6835443037974683,
+      "f1": 0.34285714285714286,
+      "roc_auc": 0.7870625465376024,
+      "confusion_matrix": {
+        "tn": 498,
+        "fp": 182,
+        "fn": 25,
+        "tp": 54
+      }
+    },
+    "effort_aware": {
+      "computable": true,
+      "popt": 0.7866249938439256,
+      "pofb20": 0.6455696202531646,
+      "area_model": 0.7562944550731586,
+      "area_optimal": 0.9470902059795896,
+      "area_worst": 0.0529097940204104,
+      "note": "effort = la+ld (code churn); this is a proxy for reviewer effort, following Kamei et al., since real review-time data is not available."
+    }
+  },
+  "hybrid_code_plus_developer": {
+    "classification": {
+      "threshold": 0.5,
+      "accuracy": 0.7971014492753623,
+      "precision": 0.2549019607843137,
+      "recall": 0.4936708860759494,
+      "f1": 0.33620689655172414,
+      "roc_auc": 0.7591399851079673,
+      "confusion_matrix": {
+        "tn": 566,
+        "fp": 114,
+        "fn": 40,
+        "tp": 39
+      }
+    },
+    "effort_aware": {
+      "computable": true,
+      "popt": 0.76696203663001,
+      "pofb20": 0.5443037974683544,
+      "area_model": 0.7387122238912838,
+      "area_optimal": 0.9470902059795896,
+      "area_worst": 0.0529097940204104,
+      "note": "effort = la+ld (code churn); this is a proxy for reviewer effort, following Kamei et al., since real review-time data is not available."
+    },
+    "training_history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.8568551891017524,
+        "val_auc": 0.7649854578988438,
+        "val_f1": 0.40522875816993464
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.7590684487831699,
+        "val_auc": 0.7817975455770731,
+        "val_f1": 0.3893805309734513
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.7184672226126823,
+        "val_auc": 0.7931474781868483,
+        "val_f1": 0.475
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.6805463256556533,
+        "val_auc": 0.7928282613321985,
+        "val_f1": 0.45528455284552843
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.6385293791911192,
+        "val_auc": 0.8030077321415904,
+        "val_f1": 0.4765957446808511
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.5848847997942589,
+        "val_auc": 0.8049585018088955,
+        "val_f1": 0.5106382978723404
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.5323707366757583,
+        "val_auc": 0.7978293253883806,
+        "val_f1": 0.4351145038167939
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.47095397020501134,
+        "val_auc": 0.802723983826346,
+        "val_f1": 0.4661016949152542
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.4167076187699073,
+        "val_auc": 0.7944598141448536,
+        "val_f1": 0.42911877394636017
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.32687407082071773,
+        "val_auc": 0.7871532950273108,
+        "val_f1": 0.4392156862745098
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.2844311363408165,
+        "val_auc": 0.7976874512307583,
+        "val_f1": 0.4351145038167939
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.22940215651129492,
+        "val_auc": 0.7778605377030574,
+        "val_f1": 0.4563106796116505
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.2602068618616486,
+        "val_auc": 0.7837483152443782,
+        "val_f1": 0.46153846153846156
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.15574338387728293,
+        "val_auc": 0.7698446477974037,
+        "val_f1": 0.4519230769230769
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.15025180053481957,
+        "val_auc": 0.7800950556856069,
+        "val_f1": 0.4434782608695652
+      }
+    ],
+    "best_val_auc": 0.8049585018088955
+  },
+  "dataset": {
+    "train_csv": "data/flask_commits_train.csv",
+    "test_csv": "data/flask_commits_test.csv",
+    "n_train": 2577,
+    "n_val": 455,
+    "n_test": 759,
+    "train_label_rate": 0.31354287931703534,
+    "val_label_rate": 0.16263736263736264,
+    "test_label_rate": 0.10408432147562582
+  }
+}
